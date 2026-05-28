@@ -1,8 +1,15 @@
+import type { ProductVisibility } from "@/lib/platform-access-contract";
+
 export interface ForgeProject {
   key: string;
   name: string;
   description: string;
   status: "active" | "archived";
+  visibility: ProductVisibility;
+  access: {
+    allowed: boolean;
+    reason: string;
+  };
   createdAt: string;
 }
 
