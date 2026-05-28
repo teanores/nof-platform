@@ -43,7 +43,12 @@ export function portalLoginUrl(returnTo: string): string {
 }
 
 export async function portalSessionFromRequest(request: NextRequest): Promise<ForgePortalSession> {
-  return getDragonForgeAuthRepository().sessionFromCookie(request.cookies.get(dragonForgeAuthCookieName)?.value);
+  const cookieValue = request.cookies.get(dragonForgeAuthCookieName)?.value;
+  if (!cookieValue) {
+    return { authenticated: false, loginUrl: portalLoginUrl(`${request.nextUrl.pathname}${request.nextUrl.search}`) };
+  }
+
+  return getDragonForgeAuthRepository().sessionFromCookie(cookieValue);
 }
 
 export async function requirePortalApiSession(request: NextRequest): Promise<NextResponse | undefined> {
