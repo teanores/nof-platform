@@ -19,7 +19,7 @@ export const portalModules: PortalModule[] = [
     key: "tracker",
     title: "Task Tracker",
     description: "Эпики, задачи, спринты и планирование работы агентов.",
-    href: "/projects",
+    href: "/products/nof-tt/launch?next=/projects/nof-tt",
     status: "available",
   },
   {

@@ -21,8 +21,8 @@ describe("platform shell manifest", () => {
     expect(protectedPortalRoutes).toContain("/profile");
   });
 
-  it("links products through platform modules instead of embedding product boards", () => {
-    expect(portalModules.find((module) => module.key === "tracker")?.href).toBe("/projects");
+  it("launches standalone products through platform handoff routes instead of embedding product boards", () => {
+    expect(portalModules.find((module) => module.key === "tracker")?.href).toBe("/products/nof-tt/launch?next=/projects/nof-tt");
     expect(portalModules.find((module) => module.key === "habits")?.href).toBe("/projects/nof-ht");
   });
 
